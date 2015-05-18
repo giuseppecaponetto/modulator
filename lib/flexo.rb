@@ -24,14 +24,14 @@ class Flexo
   def []=(name, value)
     @attribute_table[name] = value
   end
+  #esegue le proc contentute nella tabella. 
+  #TODO implementare un'eccezione qualora il contenuto non sia una proc o lambda
+  def execute(name)
+    @method_table[name.to_sym].call 
+  end
   
   #restituisce il valore della tabella dei metodi avente per chiave il simbolo "name"
   #equivale a farsi restituire il valore con la sintassi flexo_obj.name
-  
-  def execute(name)
-    @method_table[name.to_sym].call
-  end
-  
   def get_method(name)
     @method_table[name.to_sym]
   end
