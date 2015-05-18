@@ -25,7 +25,8 @@ class Flexo
     @attribute_table[name] = value
   end
   #esegue le proc contentute nella tabella. 
-  #TODO implementare un'eccezione qualora il contenuto non sia una proc o lambda
+  #TODO essendo una proc e non una lambda non viene eseguito nulla se l'elemento contenuto non è una proc.
+  #es. se @method_table[:pippo] contiene una stringa piuttosto che una proc, essa verrà ignorata.
   def execute(name)
     @method_table[name.to_sym].call 
   end
