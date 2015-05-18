@@ -1,8 +1,8 @@
+
 class Flexo
   #passa un attr_hash al costruttore (il valore di default è nil), se l'attr_hash restituisce true (ovvero è diverso da false e nil)
-  #converte per ogni coppia di k, v la chiave in simbolo e popola una tabella(attr_hash).
-  
-  def initialize(attr_hash = nil, method_hash = nil)
+  #converte per ogni coppia di k, v la chiave in simbolo e popola una tabella(attr_hash).  
+  def initialize(class_name="BaseClass", attr_hash = nil, method_hash = nil)
     @attribute_table = {}
     @method_table = {}
     if attr_hash
@@ -11,6 +11,7 @@ class Flexo
     if method_hash
       map_to_method_table(method_hash)  
     end
+    @klass = Object.const_set(class_name.to_s.capitalize, Class.new)
   end
   
   #restituisce il valore della tabella degli attributi avente per chiave il simbolo "name"
